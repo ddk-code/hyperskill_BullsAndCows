@@ -244,6 +244,55 @@ files:
         }
     }
   learner_created: false
+- name: src/bullscows/BullsCows.java
+  visible: true
+  text: "package bullscows;\n\npublic class BullsCows {\n    private final int number;\n\
+    \    private final String digits;\n    int turn;\n\n    GameState state;\n\n \
+    \   int answer;\n    String answerDigits;\n    int bulls;\n    int cows;\n\n \
+    \   public BullsCows(int number) {\n        this.state = GameState.NOT_FINISHED;\n\
+    \        this.number = number;\n        this.digits = Integer.toString(number);\n\
+    \        this.turn = 0;\n//        System.out.println(\"\\nThe secret code is\
+    \ prepared: ****.\");\n    }\n\n    public void start() {\n\n    }\n\n    private\
+    \ void generatePseudoRandomNumber() {\n\n    }\n    \n    public void checkAnswer(int\
+    \ answer) {\n        ++this.turn;\n //       System.out.println(\"\\nTurn \" +\
+    \ this.turn + \". Answer:\");\n        this.answer = answer;\n        this.cows\
+    \ = 0;\n        this.bulls = 0;\n        this.answerDigits = Integer.toString(answer);\n\
+    \        bullsAndCowsCounting();\n        printGrade();\n        if (this.bulls\
+    \ == 4) {\n            System.out.println(\"Congrats! The secret code is \" +\
+    \ this.number + \".\");\n            this.state = GameState.FINISHED;\n      \
+    \  }\n    }\n\n    private void bullsAndCowsCounting() {\n        for (int i =\
+    \ 0; i < this.answerDigits.length(); i++) {\n            if (answerDigits.charAt(i)\
+    \ == digits.charAt(i)) {\n                ++this.bulls;\n            } else if\
+    \ (digits.contains(Character.toString(answerDigits.charAt(i)))) {\n          \
+    \      ++this.cows;\n            }\n        }\n    }\n\n    private void printGrade()\
+    \ {\n        System.out.print(\"Grade: \");\n        if (this.bulls > 0 || this.cows\
+    \ > 0) {\n            System.out.print(printBullsMsg());\n            System.out.print(!\"\
+    \".equals(printBullsMsg()) && !\"\".equals(printCowsMsg()) ? \" and \" : \"\"\
+    );\n            System.out.print(printCowsMsg());\n//            System.out.println(\"\
+    .\");\n            System.out.print(\".\"); //\n            System.out.println(\"\
+    \ The secret code is \" + this.number + \".\"); //\n\n        } else {\n     \
+    \       System.out.println(\"None.\");\n            System.out.println(\" The\
+    \ secret code is \" + this.number + \".\");\n        }\n    }\n\n    private String\
+    \ printBullsMsg() {\n        if (this.bulls == 1) {\n            return \"1 bull\"\
+    ;\n        }\n        if (this.bulls > 1) {\n            return this.bulls + \"\
+    \ bulls\";\n        }\n        return \"\";\n    }\n\n    private String printCowsMsg()\
+    \ {\n        if (this.cows == 1) {\n            return \"1 cow\";\n        }\n\
+    \        if (this.cows > 1) {\n            return this.cows + \" cows\";\n   \
+    \     }\n        return \"\";\n    }\n}\n"
+  learner_created: true
+- name: src/bullscows/GameState.java
+  visible: true
+  text: |
+    package bullscows;
+
+    public enum GameState {
+        NOT_FINISHED,
+        FINISHED
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/53/stages/290/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Mon, 25 Jan 2021 08:30:45 UTC
 record: -1
